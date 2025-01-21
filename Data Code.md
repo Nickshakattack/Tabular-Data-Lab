@@ -22,3 +22,24 @@ function setup() {
 }
 
 
+Visualization 2:
+
+ let table, data, dropdown;
+
+function preload() {
+  table = loadTable("data.csv", "csv", "header");
+}
+
+function setup() {
+  createCanvas(800, 400);
+
+  dropdown = createSelect();
+  dropdown.position(20, 20);
+  dropdown.option("January");
+  dropdown.option("February");
+  dropdown.changed(updateSubset);
+
+  data = getMonthData("January");
+  drawBarChart(data);
+}
+
