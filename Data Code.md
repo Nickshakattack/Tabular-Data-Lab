@@ -43,3 +43,20 @@ function setup() {
   drawBarChart(data);
 }
 
+function getMonthData(month) {
+  return table.getColumn(month);
+}
+
+function updateSubset() {
+  let month = dropdown.value();
+  data = getMonthData(month);
+  redraw();
+}
+
+function drawBarChart(data) {
+  background(255);
+  for (let i = 0; i < data.length; i++) {
+    let value = map(data[i], 0, max(data), height - 50, 50);
+    rect(i * 20, height - value, 15, value);
+  }
+}
